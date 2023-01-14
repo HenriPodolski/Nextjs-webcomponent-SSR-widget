@@ -5,6 +5,11 @@ This is a proof of concept, covering the following topics:
 * Exposing the code fragments for the widget to work from the public folder of ./components-app/public, by using a webpack plugin that builds and bundles necessary dependencies and code only
 * Sharing the components between Next.js apps (and probably other apps) using import via URL (e.g. `import MyComponent from 'https://example.com/my-component.js;`)
 
+## Motivation
+Using components from a Next.js application in another web application is a common use case. The code in this repository got you covered.
+Example: This Twitch followers widget is a seperate website: [My Twitch follower goal](https://dashboard.twitch.tv/widgets/goal/h3nr1p). 
+The demonstration in this repository, shows you how to implement something similar from your own Next.js application 
+
 ## Overview
 ![image](./architecture.png)
 
