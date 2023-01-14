@@ -2,6 +2,7 @@
 This is a proof of concept, covering the following topics:
 * webcomponent that renders React components in webcomponents Shadow DOM
 * SSR and client side rehydration
+* Exposing the code fragments for the widget to work from the public folder of ./components-app/public, by using a webpack plugin that builds and bundles necessary dependencies and code only
 * Sharing the components between Next.js apps (and probably other apps) using import via URL (e.g. `import MyComponent from 'https://example.com/my-component.js;`)
 
 ## Overview
