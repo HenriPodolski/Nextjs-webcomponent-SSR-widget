@@ -7,8 +7,10 @@ This is a proof of concept, covering the following topics:
 
 ## Motivation
 Using components from a Next.js application in another web application is a common use case. The code in this repository got you covered.
-Example: This Twitch followers widget is a seperate website: [My Twitch follower goal](https://dashboard.twitch.tv/widgets/goal/h3nr1p). 
-The demonstration in this repository, shows you how to implement something similar from your own Next.js application 
+Example: This Twitch followers widget is a separate website: [My Twitch follower goal](https://dashboard.twitch.tv/widgets/goal/h3nr1p). 
+If you want to embed it, into your website you will end up with an iframe solution.
+The demonstration in this repository, shows you how to implement something similar from your own Next.js application, but as a webcomponent
+that wraps existing React components and all that in SEO-friendly manner, because SSR is possible with that approach.
 
 ## Overview
 ![image](./architecture.png)
