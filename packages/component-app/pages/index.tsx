@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
-import {createElement, FunctionComponent, useEffect} from 'react';
-import MyComponent from '@/components/my-component/MyComponent';
+import {createElement, FunctionComponent, useEffect, useState} from 'react';
+import MyComponent from '@/widgets/my-component/MyComponent';
 import ReactDOMServer from 'react-dom/server';
 
 
@@ -13,8 +13,33 @@ type Props = {
     }
 }
 const Home: FunctionComponent<Props> = ({ data }) => {
+    // Set showDynamicChange to true if you want to
+    // test attributeChangeCallback behaviour
+    const [showDynamicChange] = useState(false);
+    const [currentData, setCurrentData] = useState(data);
+
     useEffect(() => {
-        import('../components/my-component/component');
+        import('../widgets/my-component/component');
+    }, []);
+
+    useEffect(() => {
+        if (!showDynamicChange) {
+            return;
+        }
+
+        const indexes = [0,1,2];
+        let counter = 0;
+        const interval = setInterval(async () => {
+            if (!indexes[counter]) {
+                counter = 0;
+            }
+            const fetchedData = await fetch(`http://localhost:3000/api/hello?index=${counter}`)
+                .then((res) => res.json())
+            setCurrentData(fetchedData);
+            counter++;
+        }, 1000);
+
+        return () => {clearInterval(interval)}
     }, []);
 
   return (
@@ -25,10 +50,9 @@ const Home: FunctionComponent<Props> = ({ data }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        {!data && (<pre>!data {JSON.stringify(data)}</pre>)}
       <main className={styles.main}>
-        <my-component data={JSON.stringify(data)} dangerouslySetInnerHTML={{
-            __html: ReactDOMServer.renderToString(createElement(MyComponent, { data })),
+        <my-component data={JSON.stringify(currentData)} dangerouslySetInnerHTML={{
+            __html: ReactDOMServer.renderToString(createElement(MyComponent, { data: currentData })),
         }} />
       </main>
     </>

@@ -13,7 +13,7 @@
 /out/
 
 # production
-/build
+/plugins
 
 # misc
 .DS_Store

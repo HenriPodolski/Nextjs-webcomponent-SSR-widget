@@ -1,8 +1,12 @@
 import { createElement } from 'react';
 import { hydrateRoot } from 'react-dom/client';
-import MyComponent, { MyComponentProps } from '@/components/my-component/MyComponent';
+import MyComponent, { MyComponentProps } from '@/widgets/my-component/MyComponent';
 
 export default class MyWebComponent extends HTMLElement {
+
+    static get observedAttributes() {
+        return ['data'];
+    }
 
     reactRoot: any;
 
@@ -72,6 +76,12 @@ export default class MyWebComponent extends HTMLElement {
         }
 
         return attributeData;
+    }
+
+    attributeChangedCallback(name: string, newValue: string) {
+        if (name === 'data' && newValue) {
+            this.reactRoot.render(this.createReactComponent());
+        }
     }
 }
 
