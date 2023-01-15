@@ -1,5 +1,5 @@
 import styles from './MyComponent.module.scss';
-import {FunctionComponent} from "react";
+import {FunctionComponent} from 'react';
 
 export type MyComponentProps = {
     data?: {

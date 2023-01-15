@@ -4,12 +4,13 @@
   "private": true,
   "dependencies": {},
   "scripts": {
-    "lint": "eslint .",
-    "prettier": "npx prettier --write ."
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "start": "npm run start --workspaces"
   },
-  "devDependencies": {
-    "eslint-config-prettier": "^8.3.0",
-    "prettier": "^2.7.1",
-    "next": "13.1.2"
-  }
+  "devDependencies": {},
+  "workspaces": [
+    "packages/component-app",
+    "packages/other-next-app"
+  ]
 }

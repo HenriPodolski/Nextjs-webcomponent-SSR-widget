@@ -1,7 +1,6 @@
-import { createElement } from "react";
-import { hydrateRoot } from "react-dom/client";
-import MyComponent, {MyComponentProps} from "@/components/my-component/MyComponent";
-
+import { createElement } from 'react';
+import { hydrateRoot } from 'react-dom/client';
+import MyComponent, { MyComponentProps } from '@/components/my-component/MyComponent';
 
 export default class MyWebComponent extends HTMLElement {
 
@@ -14,7 +13,7 @@ export default class MyWebComponent extends HTMLElement {
         super();
 
         // Safari does not support this feature. https://caniuse.com/mdn-api_htmlelement_attachinternals
-        if (typeof this.attachInternals === "function") {
+        if (typeof this.attachInternals === 'function') {
             const internals = this.attachInternals();
 
             this.shadow = internals.shadowRoot;
@@ -38,7 +37,7 @@ export default class MyWebComponent extends HTMLElement {
     }
 
     attachShadowDomImperatively() {
-        this.shadow = this.attachShadow({ mode: "open" });
+        this.shadow = this.attachShadow({ mode: 'open' });
         const serverRenderedHTML = this.innerHTML;
         this.mountPoint = document.createElement('div');
         this.mountPoint.innerHTML = serverRenderedHTML;
@@ -58,8 +57,10 @@ export default class MyWebComponent extends HTMLElement {
 
         const styleElement = document.createElement('style');
         styleElement.innerHTML = getStyleSheet();
+
         this.shadow.appendChild(styleElement);
         this.shadow.appendChild(this.mountPoint);
+        this.innerHTML = '';
     }
 
     parseAttributeData(data: string) {
@@ -74,5 +75,6 @@ export default class MyWebComponent extends HTMLElement {
     }
 }
 
-customElements.define("my-component", MyWebComponent);
-
+if (!customElements.get('my-component')) {
+    customElements.define('my-component', MyWebComponent);
+}

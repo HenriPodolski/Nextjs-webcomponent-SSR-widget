@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
-import {createElement, FunctionComponent, useEffect} from "react";
-import MyComponent from "@/components/my-component/MyComponent";
-import ReactDOMServer from "react-dom/server";
+import {createElement, FunctionComponent, useEffect} from 'react';
+import MyComponent from '@/components/my-component/MyComponent';
+import ReactDOMServer from 'react-dom/server';
 
 
 
@@ -14,7 +14,7 @@ type Props = {
 }
 const Home: FunctionComponent<Props> = ({ data }) => {
     useEffect(() => {
-        import("../components/my-component/component");
+        import('../components/my-component/component');
     }, []);
 
   return (
@@ -36,7 +36,7 @@ const Home: FunctionComponent<Props> = ({ data }) => {
 }
 
 export const getServerSideProps = async () => {
-    const data = await fetch(`http://localhost:3000/api/hello`)
+    const data = await fetch('http://localhost:3000/api/hello')
         .then(res => res.json());
     return {
         props: {

@@ -9,7 +9,7 @@ declare global {
     > {}
     namespace JSX {
         interface IntrinsicElements {
-            "my-component": MyComponent;
+            'my-component': MyComponent;
         }
     }
 }

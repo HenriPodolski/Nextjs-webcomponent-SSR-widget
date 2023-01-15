@@ -1,6 +1,0 @@
-{
-  "extends": ["prettier"],
-  "rules": {
-    "quotes": ["error", "single"]
-  }
-}
