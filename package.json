@@ -1,0 +1,15 @@
+{
+  "name": "Nextjs-webcomponent-SSR-widget",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {},
+  "scripts": {
+    "lint": "eslint .",
+    "prettier": "npx prettier --write ."
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.7.1",
+    "next": "13.1.2"
+  }
+}
