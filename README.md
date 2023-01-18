@@ -21,5 +21,6 @@ I used those posts, docs and implementations as a starting point and mixed it up
 * Exposing and importing components via URL: [NextJS URL Import React Component](https://github.com/TomasHubelbauer/next-url-import-react-component)
 * Enhancing Next.js webpack to expose widgets containing necessary JS, styles and assets only: [Next-widget](https://github.com/LeMisterV/Next-widget)
 * [Wrapping React Components Inside Custom Elements](https://gilfink.medium.com/wrapping-react-components-inside-custom-elements-97431d1155bd)
+* [Using CSS files (e.g. from Next.js build) in WebComponents](https://tinloof.com/blog/using-css-files-in-web-components)
 * [Next.js docs](https://nextjs.org/docs)
 * [React docs](https://reactjs.org/docs/getting-started.html)
