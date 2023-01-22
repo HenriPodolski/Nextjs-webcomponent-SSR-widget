@@ -46,16 +46,21 @@ export default class MyWebComponent extends HTMLElement {
         this.mountPoint = document.createElement('div');
         this.mountPoint.innerHTML = serverRenderedHTML;
         const myComponent = this.createReactComponent();
-        this.reactRoot = hydrateRoot(this.mountPoint as unknown as Element, myComponent);
+        this.reactRoot = hydrateRoot(
+            this.mountPoint as unknown as Element, myComponent
+        );
 
         const getStyleSheet = () => {
-            return Array.from(document.styleSheets).reduce((prev: string, styleSheet: CSSStyleSheet) => {
-                if (styleSheet.cssRules[0] && styleSheet.cssRules[0].cssText.startsWith('.MyComponent_MyComponent')) {
-                    prev = styleSheet.cssRules[0].cssText;
-                }
+            return Array.from(document.styleSheets)
+                .reduce((prev: string, styleSheet: CSSStyleSheet) => {
+                    if (styleSheet.cssRules[0] &&
+                        styleSheet.cssRules[0].cssText
+                            .startsWith('.MyComponent_MyComponent')) {
+                        prev = styleSheet.cssRules[0].cssText;
+                    }
 
-                return prev;
-            }, '');
+                    return prev;
+                }, '');
         }
 
 
