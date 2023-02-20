@@ -1,16 +1,22 @@
 {
-  "name": "Nextjs-webcomponent-SSR-widget",
+  "name": "next-lit-workbench",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "dom-parser": "^0.1.6"
+  },
   "scripts": {
     "dev": "npm run dev --workspaces",
     "build": "npm run build --workspaces",
     "start": "npm run start --workspaces"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/dom-parser": "^0.1.1"
+  },
   "workspaces": [
+    "packages/components",
     "packages/component-app",
-    "packages/other-next-app"
+    "packages/other-next-app",
+    "packages/webcomponents"
   ]
 }

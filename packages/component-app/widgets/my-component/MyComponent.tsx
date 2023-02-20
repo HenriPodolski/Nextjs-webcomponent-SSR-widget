@@ -9,7 +9,7 @@ export type MyComponentProps = {
 const MyComponent: FunctionComponent<MyComponentProps> = ({ data }) => {
     return (
         <div className={styles.MyComponent}>
-            This is a React component wrapped in a webcomponent <span onClick={() => console.log('clicked')}>{data?.addition}</span>
+            Micro Frontend webcomponent wrapping a React component <span onClick={() => console.log('clicked')}>{data?.addition}</span>
         </div>
     );
 };

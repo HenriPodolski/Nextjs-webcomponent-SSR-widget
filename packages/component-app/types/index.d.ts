@@ -7,6 +7,7 @@ declare global {
         MyComponentAttributes,
         HTMLElement
     > {}
+
     namespace JSX {
         interface IntrinsicElements {
             'my-component': MyComponent;

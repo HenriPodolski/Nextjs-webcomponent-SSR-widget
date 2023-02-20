@@ -1,18 +1,13 @@
-import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
 import {createElement, FunctionComponent, useEffect, useState} from 'react';
 import MyComponent from '@/widgets/my-component/MyComponent';
-import ReactDOMServer from 'react-dom/server';
-
-
-
+import {renderToString} from "react-dom/server";
 
 type Props = {
     data: {
         addition: string;
     }
 }
-const Home: FunctionComponent<Props> = ({ data }) => {
+const ComponentInit: FunctionComponent<Props> = ({ data }) => {
     // Set showDynamicChange to true if you want to
     // test attributeChangeCallback behaviour
     const [showDynamicChange] = useState(false);
@@ -42,31 +37,19 @@ const Home: FunctionComponent<Props> = ({ data }) => {
         return () => {clearInterval(interval)}
     }, []);
 
-  return (
-    <>
-      <Head>
-        <title>component-app</title>
-        <meta name="description" content="Provides component app" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={styles.main}>
-        <my-component data={JSON.stringify(currentData)} dangerouslySetInnerHTML={{
-            __html: ReactDOMServer.renderToString(createElement(MyComponent, { data: currentData })),
-        }} />
-      </main>
-    </>
-  )
+    return (
+        <my-component data={JSON.stringify(currentData)}
+            dangerouslySetInnerHTML={{
+                __html: `
+                    <template shadowroot="open">
+                        ${renderToString(
+                            createElement(MyComponent, { data: currentData }))
+                        }
+                    </template>
+                `
+        }}
+        />
+    )
 }
 
-export const getServerSideProps = async () => {
-    const data = await fetch('http://localhost:3000/api/hello')
-        .then(res => res.json());
-    return {
-        props: {
-            data
-        }
-    }
-}
-
-export default Home;
+export default ComponentInit;
